@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import AppContent from "./components/AppContent";
+import AppHeader from "./components/AppHeader";
+import PageTitle from "./components/PageTitle";
+
+import "./App.css";
+
+const App = () => {
+    const [darkMode, setDarkMode] = useState(false);
+
+    return (
+        <>
+            <div className="toggler">
+                <div className="maincontainer">
+                    <div className={`mode__tog ${darkMode && "active"}`}
+                        onClick={() => setDarkMode(!darkMode)}
+                    ></div>
+                    <div className="mode__container">
+                        <div
+                            className={`dark_mode ${darkMode && "active"}`}
+                        ></div>
+                    </div>
+                    <div className="diff">
+                        <PageTitle>TODO List</PageTitle>
+                        <div className="app__wrapper">
+                            <AppHeader />
+                            <AppContent />
+                        </div>
+                    </div>
+                </div>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    // pauseOnHover
+                />
+            </div>
+        </>
+    );
+};
 
 export default App;
