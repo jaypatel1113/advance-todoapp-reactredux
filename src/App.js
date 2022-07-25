@@ -40,6 +40,7 @@ const App = () => {
                     rtl={false}
                     pauseOnFocusLoss
                     draggable
+                    theme={darkMode ? "dark" : "colored"}
                     // pauseOnHover
                 />
             </div>
